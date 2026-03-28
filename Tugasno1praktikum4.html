@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramadan Mubarak 1446 H</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --gold-dark: #8B6914;
+    --deep: #0A0E1A;
+    --navy: #0F1828;
+    --teal: #1A4A4A;
+    --cream: #FDF5E0;
+    --text: #F5EDD0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--text);
+    font-family: 'Tajawal', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* === STARS BG === */
+  .stars-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle var(--dur) ease-in-out infinite;
+    animation-delay: var(--delay);
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.4); }
+  }
+
+  /* === MAIN LAYOUT === */
+  .page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* === LANTERNS === */
+  .lanterns {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    pointer-events: none;
+    z-index: 2;
+    padding: 0 5%;
+  }
+  .lantern-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: swingLantern var(--sw) ease-in-out infinite alternate;
+    transform-origin: top center;
+  }
+  .lantern-wrap:nth-child(2) { animation-delay: -1s; }
+  .lantern-wrap:nth-child(3) { animation-delay: -0.5s; }
+  .lantern-wrap:nth-child(4) { display: none; }
+  @media(min-width: 900px) { .lantern-wrap:nth-child(4) { display: flex; } }
+  @keyframes swingLantern {
+    from { transform: rotate(-8deg); }
+    to   { transform: rotate(8deg); }
+  }
+  .lantern-string {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(var(--gold), transparent);
+  }
+  .lantern-body {
+    width: 38px;
+    height: 56px;
+    background: linear-gradient(135deg, #D4521A, #FF7A2A, #C03A10);
+    border-radius: 6px 6px 12px 12px;
+    position: relative;
+    box-shadow: 0 0 18px 6px rgba(255,100,20,0.5), inset 0 0 8px rgba(255,200,50,0.3);
+    overflow: hidden;
+  }
+  .lantern-body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 10px, rgba(0,0,0,0.15) 10px, rgba(0,0,0,0.15) 11px
+    );
+  }
+  .lantern-glow {
+    position: absolute;
+    inset: 8px;
+    background: radial-gradient(circle, rgba(255,220,80,0.9), transparent 70%);
+    border-radius: 50%;
+    animation: flicker 1.5s ease-in-out infinite alternate;
+  }
+  @keyframes flicker {
+    from { opacity: 0.7; transform: scale(0.95); }
+    to   { opacity: 1;   transform: scale(1.05); }
+  }
+  .lantern-cap {
+    width: 46px;
+    height: 10px;
+    background: linear-gradient(var(--gold-dark), var(--gold));
+    border-radius: 4px;
+    margin-top: -2px;
+  }
+  .lantern-tassel {
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(var(--gold), transparent);
+    border-radius: 2px;
+    margin-top: 2px;
+  }
+
+  /* === HERO SECTION === */
+  .hero {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    padding: 120px 20px 40px;
+  }
+
+  .moon-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  .moon {
+    width: 110px;
+    height: 110px;
+    background: radial-gradient(circle at 35% 35%, #FFF0A0, var(--gold-light) 50%, var(--gold));
+    border-radius: 50%;
+    box-shadow:
+      0 0 30px 10px rgba(201,168,76,0.4),
+      0 0 80px 20px rgba(201,168,76,0.2),
+      inset -15px -10px 30px rgba(180,130,20,0.4);
+    animation: moonGlow 3s ease-in-out infinite alternate;
+    position: relative;
+    z-index: 1;
+  }
+  .moon::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 60%;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(100,60,0,0.15), transparent 70%);
+    border-radius: 50%;
+  }
+  .moon-orbit {
+    position: absolute;
+    inset: -20px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 50%;
+    animation: orbit 8s linear infinite;
+  }
+  .moon-star {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: var(--gold-light);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    transform: translateX(-50%);
+  }
+  @keyframes moonGlow {
+    from { box-shadow: 0 0 30px 10px rgba(201,168,76,0.4), 0 0 80px 20px rgba(201,168,76,0.2), inset -15px -10px 30px rgba(180,130,20,0.4); }
+    to   { box-shadow: 0 0 50px 20px rgba(201,168,76,0.6), 0 0 120px 40px rgba(201,168,76,0.3), inset -15px -10px 30px rgba(180,130,20,0.4); }
+  }
+  @keyframes orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .arabic-text {
+    font-family: 'Amiri', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    color: var(--gold-light);
+    text-shadow: 0 0 20px rgba(201,168,76,0.5);
+    margin-bottom: 8px;
+    animation: fadeUp 1s ease both;
+    animation-delay: 0.2s;
+    opacity: 0;
+  }
+  .title-main {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark), var(--gold-light));
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite, fadeUp 1s ease both;
+    animation-delay: 0s, 0.4s;
+    opacity: 0;
+    line-height: 1.1;
+  }
+  @keyframes shimmer { 0% { background-position: 0%; } 100% { background-position: 300%; } }
+  .title-year {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-top: 6px;
+    opacity: 0;
+    animation: fadeUp 1s ease both;
+    animation-delay: 0.6s;
+  }
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px auto;
+    width: fit-content;
+    opacity: 0;
+    animation: fadeUp 1s ease both;
+    animation-delay: 0.8s;
+  }
+  .divider-line { width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
+  .divider-line.right { background: linear-gradient(to left, transparent, var(--gold)); }
+  .divider-diamond {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: rgba(245,237,208,0.75);
+    line-height: 1.8;
+    max-width: 540px;
+    margin: 0 auto 36px;
+    opacity: 0;
+    animation: fadeUp 1s ease both;
+    animation-delay: 1s;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === COUNTDOWN === */
+  .countdown-section {
+    opacity: 0;
+    animation: fadeUp 1s ease both;
+    animation-delay: 1.2s;
+    margin-bottom: 36px;
+    width: 100%;
+    max-width: 480px;
+    padding: 0 20px;
+  }
+  .countdown-label {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .countdown-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+  .cd-box {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 10px;
+    padding: 14px 18px;
+    min-width: 76px;
+    position: relative;
+    backdrop-filter: blur(8px);
+  }
+  .cd-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.1), transparent);
+  }
+  .cd-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    display: block;
+  }
+  .cd-unit {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: rgba(245,237,208,0.5);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+  }
+  .cd-colon {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    align-self: center;
+    animation: pulse 1s ease-in-out infinite;
+    margin-top: -8px;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+  /* === THR BUTTON === */
+  .thr-btn-wrap {
+    opacity: 0;
+    animation: fadeUp 1s ease both;
+    animation-delay: 1.4s;
+    margin-bottom: 60px;
+  }
+  .thr-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 44px;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold));
+    background-size: 300%;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--deep);
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: btnShimmer 3s linear infinite;
+    box-shadow: 0 6px 30px rgba(201,168,76,0.4), 0 0 0 0 rgba(201,168,76,0.3);
+    letter-spacing: 0.5px;
+  }
+  .thr-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
+    transform: translateX(-100%);
+    animation: sweep 2.5s ease-in-out infinite;
+  }
+  @keyframes sweep { 0%,100% { transform: translateX(-100%); } 50% { transform: translateX(100%); } }
+  @keyframes btnShimmer { 0% { background-position: 0%; } 100% { background-position: 300%; } }
+  .thr-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.6), 0 0 0 4px rgba(201,168,76,0.15);
+  }
+  .thr-btn:active { transform: translateY(0) scale(0.98); }
+  .thr-icon { font-size: 1.4rem; animation: coinBounce 1.5s ease-in-out infinite; }
+  @keyframes coinBounce {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-6px) rotate(15deg); }
+  }
+  .thr-btn-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    box-shadow: 0 0 20px 2px rgba(201,168,76,0.5);
+    animation: glowPulse 2s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes glowPulse {
+    from { opacity: 0.5; } to { opacity: 1; }
+  }
+
+  /* === PATTERN ROW === */
+  .pattern-row {
+    width: 100%;
+    height: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='40' viewBox='0 0 60 40'%3E%3Cpath d='M30 5 L35 20 L50 20 L38 29 L43 44 L30 35 L17 44 L22 29 L10 20 L25 20 Z' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    margin: 0 0 50px;
+    opacity: 0.5;
+  }
+
+  /* === INFO CARDS === */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 820px;
+    padding: 0 20px 60px;
+    opacity: 0;
+    animation: fadeUp 1s ease both;
+    animation-delay: 1.6s;
+  }
+  .card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: border-color 0.3s, transform 0.3s, background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .card:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-4px); background: rgba(201,168,76,0.05); }
+  .card:hover::before { opacity: 1; }
+  .card-icon { font-size: 2.2rem; margin-bottom: 14px; display: block; }
+  .card-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--gold-light); margin-bottom: 8px; }
+  .card-text { font-size: 0.85rem; color: rgba(245,237,208,0.55); line-height: 1.7; }
+
+  /* === FOOTER === */
+  .footer {
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 24px 20px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgba(245,237,208,0.35);
+    letter-spacing: 2px;
+    width: 100%;
+  }
+
+  /* ===================== MODAL ===================== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .modal-overlay.active {
+    pointer-events: all;
+    opacity: 1;
+  }
+  .modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 8, 18, 0.88);
+    backdrop-filter: blur(6px);
+  }
+  .modal-box {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(145deg, #0F1828, #161F30, #0A1418);
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 24px;
+    padding: 50px 40px 40px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    transform: scale(0.7) translateY(40px);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(201,168,76,0.1);
+  }
+  .modal-overlay.active .modal-box {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  .modal-top-border {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold), var(--gold-light), transparent);
+    animation: borderShimmer 2s linear infinite;
+    background-size: 200%;
+  }
+  @keyframes borderShimmer { 0% { background-position: -200%; } 100% { background-position: 200%; } }
+
+  /* Confetti canvas */
+  #confetti { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+
+  .modal-content { position: relative; z-index: 1; }
+
+  .modal-envelope {
+    font-size: 4rem;
+    display: inline-block;
+    animation: envelopePop 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+    animation-delay: 0.3s;
+    filter: drop-shadow(0 0 12px rgba(201,168,76,0.6));
+  }
+  @keyframes envelopePop {
+    from { transform: scale(0) rotate(-20deg); opacity: 0; }
+    to   { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+
+  .modal-stars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .modal-star {
+    color: var(--gold);
+    font-size: 1.2rem;
+    animation: starPop 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  .modal-star:nth-child(1) { animation-delay: 0.5s; }
+  .modal-star:nth-child(2) { animation-delay: 0.6s; }
+  .modal-star:nth-child(3) { animation-delay: 0.7s; }
+  .modal-star:nth-child(4) { animation-delay: 0.8s; }
+  .modal-star:nth-child(5) { animation-delay: 0.9s; }
+  @keyframes starPop {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), #FFF5C0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    animation: fadeUp 0.5s ease both;
+    animation-delay: 0.5s;
+  }
+  .modal-arabic {
+    font-family: 'Amiri', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 16px;
+    animation: fadeUp 0.5s ease both;
+    animation-delay: 0.6s;
+  }
+  .modal-sub {
+    font-size: 0.9rem;
+    color: rgba(245,237,208,0.65);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    animation: fadeUp 0.5s ease both;
+    animation-delay: 0.7s;
+  }
+
+  .money-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.5s ease both;
+    animation-delay: 0.8s;
+  }
+  .money-bill {
+    font-size: 2rem;
+    animation: moneySpin var(--sp) ease-in-out infinite alternate;
+    filter: drop-shadow(0 4px 8px rgba(201,168,76,0.4));
+  }
+  @keyframes moneySpin {
+    from { transform: translateY(0) rotate(-8deg); }
+    to   { transform: translateY(-8px) rotate(8deg); }
+  }
+
+  .modal-close {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 36px;
+    background: transparent;
+    border: 1.5px solid var(--gold);
+    border-radius: 40px;
+    color: var(--gold-light);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    animation: fadeUp 0.5s ease both;
+    animation-delay: 0.9s;
+    position: relative;
+    overflow: hidden;
+  }
+  .modal-close::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .modal-close:hover::before { opacity: 1; }
+  .modal-close:hover { color: var(--deep); border-color: transparent; }
+  .modal-close span { position: relative; z-index: 1; }
+
+  .modal-corner {
+    position: absolute;
+    width: 40px; height: 40px;
+    border-color: var(--gold);
+    border-style: solid;
+    opacity: 0.4;
+  }
+  .modal-corner.tl { top: 10px; left: 10px; border-width: 1px 0 0 1px; }
+  .modal-corner.tr { top: 10px; right: 10px; border-width: 1px 1px 0 0; }
+  .modal-corner.bl { bottom: 10px; left: 10px; border-width: 0 0 1px 1px; }
+  .modal-corner.br { bottom: 10px; right: 10px; border-width: 0 1px 1px 0; }
+
+  /* Particles */
+  .particle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.2rem;
+    animation: particleFly 2s ease-out both;
+    z-index: 200;
+  }
+  @keyframes particleFly {
+    0%   { opacity: 1; transform: translate(0,0) scale(1) rotate(0deg); }
+    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3) rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Stars Background -->
+<div class="stars-bg" id="stars"></div>
+
+<!-- Lanterns -->
+<div class="lanterns">
+  <div class="lantern-wrap" style="--sw:3.2s">
+    <div class="lantern-cap"></div>
+    <div class="lantern-body"><div class="lantern-glow"></div></div>
+    <div class="lantern-tassel"></div>
+  </div>
+  <div class="lantern-wrap" style="--sw:2.8s">
+    <div class="lantern-cap"></div>
+    <div class="lantern-body"><div class="lantern-glow"></div></div>
+    <div class="lantern-tassel"></div>
+  </div>
+  <div class="lantern-wrap" style="--sw:3.5s">
+    <div class="lantern-cap"></div>
+    <div class="lantern-body"><div class="lantern-glow"></div></div>
+    <div class="lantern-tassel"></div>
+  </div>
+  <div class="lantern-wrap" style="--sw:2.6s">
+    <div class="lantern-cap"></div>
+    <div class="lantern-body"><div class="lantern-glow"></div></div>
+    <div class="lantern-tassel"></div>
+  </div>
+</div>
+
+<!-- Main Page -->
+<div class="page">
+  <div class="hero">
+    <!-- Moon -->
+    <div class="moon-container" style="animation: fadeUp 0.8s ease both; animation-delay:0s; opacity:0">
+      <div class="moon-orbit"><div class="moon-star"></div></div>
+      <div class="moon"></div>
+    </div>
+
+    <p class="arabic-text">رَمَضَان مُبَارَك</p>
+    <h1 class="title-main">Ramadan Mubarak</h1>
+    <p class="title-year">1 4 4 6  H I J R I Y A H</p>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line right"></div>
+    </div>
+
+    <p class="subtitle">
+      Selamat menunaikan ibadah puasa Ramadan 1446 H.<br>
+      Semoga amal ibadah kita diterima Allah SWT dan bulan penuh berkah ini membawa kebaikan bagi kita semua. 🌙
+    </p>
+
+    <!-- Countdown -->
+    <div class="countdown-section">
+      <p class="countdown-label">✦ Menuju Idul Fitri ✦</p>
+      <div class="countdown-boxes">
+        <div class="cd-box"><span class="cd-num" id="cd-d">--</span><span class="cd-unit">Hari</span></div>
+        <span class="cd-colon">:</span>
+        <div class="cd-box"><span class="cd-num" id="cd-h">--</span><span class="cd-unit">Jam</span></div>
+        <span class="cd-colon">:</span>
+        <div class="cd-box"><span class="cd-num" id="cd-m">--</span><span class="cd-unit">Menit</span></div>
+        <span class="cd-colon">:</span>
+        <div class="cd-box"><span class="cd-num" id="cd-s">--</span><span class="cd-unit">Detik</span></div>
+      </div>
+    </div>
+
+    <!-- THR Button -->
+    <div class="thr-btn-wrap">
+      <button class="thr-btn" onclick="openModal(event)">
+        <div class="thr-btn-glow"></div>
+        <span class="thr-icon">💰</span>
+        <span>Ambil THR Kamu!</span>
+        <span class="thr-icon" style="animation-delay:0.3s">🎁</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="pattern-row"></div>
+
+  <!-- Cards -->
+  <div class="cards">
+    <div class="card">
+      <span class="card-icon">🕌</span>
+      <div class="card-title">Shalat Tarawih</div>
+      <p class="card-text">Perkuat ibadah dengan shalat malam yang penuh kekhusyukan di bulan Ramadan ini.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📖</span>
+      <div class="card-title">Tadarus Al-Qur'an</div>
+      <p class="card-text">Perbanyak membaca dan memahami Al-Qur'an sebagai petunjuk kehidupan kita.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤲</span>
+      <div class="card-title">Zakat & Sedekah</div>
+      <p class="card-text">Berbagi kebahagiaan melalui zakat dan sedekah kepada mereka yang membutuhkan.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌅</span>
+      <div class="card-title">Sahur & Berbuka</div>
+      <p class="card-text">Jangan lewatkan sahur dan nikmati momen berbuka bersama keluarga tercinta.</p>
+    </div>
+  </div>
+
+  <div class="footer">✦ &nbsp; RAMADAN MUBARAK 1446 H &nbsp; ✦ &nbsp; SEMOGA BERKAH &nbsp; ✦</div>
+</div>
+
+<!-- Modal THR -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-box">
+    <div class="modal-top-border"></div>
+    <canvas id="confetti"></canvas>
+    <div class="modal-corner tl"></div>
+    <div class="modal-corner tr"></div>
+    <div class="modal-corner bl"></div>
+    <div class="modal-corner br"></div>
+
+    <div class="modal-content">
+      <div class="modal-envelope">🧧</div>
+      <div class="modal-stars">
+        <span class="modal-star">⭐</span>
+        <span class="modal-star">🌟</span>
+        <span class="modal-star">✨</span>
+        <span class="modal-star">🌟</span>
+        <span class="modal-star">⭐</span>
+      </div>
+      <h2 class="modal-title">Selamat! Anda<br>Mendapatkan THR! 🎉</h2>
+      <p class="modal-arabic">مَبْرُوك! عِيدُ الفِطْر مُبَارَك</p>
+      <p class="modal-sub">
+        Tunjangan Hari Raya telah hadir! 🌙<br>
+        Semoga rezeki ini membawa keberkahan dan<br>
+        kebahagiaan bagi keluarga tercinta. Selamat Hari Raya!
+      </p>
+      <div class="money-row">
+        <span class="money-bill" style="--sp:1.2s">💵</span>
+        <span class="money-bill" style="--sp:1.5s; animation-delay:-0.3s">💴</span>
+        <span class="money-bill" style="--sp:1.0s; animation-delay:-0.6s">💶</span>
+        <span class="money-bill" style="--sp:1.3s; animation-delay:-0.1s">💷</span>
+        <span class="money-bill" style="--sp:1.6s; animation-delay:-0.4s">🪙</span>
+      </div>
+      <button class="modal-close" onclick="closeModal()">
+        <span>🌙 Terima Kasih!</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// === GENERATE STARS ===
+const starsBg = document.getElementById('stars');
+for (let i = 0; i < 180; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 2.5 + 0.5;
+  s.style.cssText = `
+    width:${size}px; height:${size}px;
+    left:${Math.random()*100}%;
+    top:${Math.random()*100}%;
+    --dur:${2 + Math.random()*4}s;
+    --delay:${-Math.random()*4}s;
+  `;
+  starsBg.appendChild(s);
+}
+
+// === COUNTDOWN ===
+function updateCountdown() {
+  // Idul Fitri 1446 H - 30 Maret 2025
+  const eidDate = new Date('2025-03-30T00:00:00+07:00');
+  const now = new Date();
+  const diff = eidDate - now;
+  if (diff <= 0) {
+    document.getElementById('cd-d').textContent = '00';
+    document.getElementById('cd-h').textContent = '00';
+    document.getElementById('cd-m').textContent = '00';
+    document.getElementById('cd-s').textContent = '00';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// === CONFETTI ===
+let confettiAnim;
+function runConfetti() {
+  const canvas = document.getElementById('confetti');
+  const box = canvas.parentElement;
+  canvas.width = box.offsetWidth;
+  canvas.height = box.offsetHeight;
+  const ctx = canvas.getContext('2d');
+  const pieces = [];
+  const colors = ['#C9A84C','#F0D080','#FF6B6B','#4ECDC4','#45B7D1','#FFF'];
+  const emojis = ['🌙','⭐','✨','🎁','💰','🪙'];
+
+  for (let i = 0; i < 80; i++) {
+    pieces.push({
+      x: canvas.width * 0.5 + (Math.random()-0.5)*40,
+      y: canvas.height * 0.3,
+      vx: (Math.random()-0.5)*10,
+      vy: -Math.random()*12 - 4,
+      size: Math.random()*10+4,
+      color: colors[Math.floor(Math.random()*colors.length)],
+      emoji: Math.random() > 0.6 ? emojis[Math.floor(Math.random()*emojis.length)] : null,
+      rotation: Math.random()*360,
+      rotSpeed: (Math.random()-0.5)*10,
+      gravity: 0.4 + Math.random()*0.2,
+      alpha: 1
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    let alive = false;
+    pieces.forEach(p => {
+      p.x += p.vx;
+      p.vy += p.gravity;
+      p.y += p.vy;
+      p.rotation += p.rotSpeed;
+      p.alpha -= 0.012;
+      if (p.alpha > 0 && p.y < canvas.height + 20) {
+        alive = true;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation * Math.PI/180);
+        if (p.emoji) {
+          ctx.font = `${p.size*2}px serif`;
+          ctx.textAlign = 'center';
+          ctx.fillText(p.emoji, 0, 0);
+        } else {
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
+        }
+        ctx.restore();
+      }
+    });
+    if (alive) confettiAnim = requestAnimationFrame(draw);
+    else ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+  draw();
+}
+
+// === PARTICLES FROM BUTTON ===
+function spawnParticles(x, y) {
+  const emojis = ['💰','🎁','✨','⭐','🌙','🪙','🎉','🧧'];
+  for (let i = 0; i < 16; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    const angle = (Math.random() * 360) * Math.PI / 180;
+    const dist = 80 + Math.random() * 120;
+    p.style.cssText = `
+      left:${x}px; top:${y}px;
+      --tx:${Math.cos(angle)*dist}px;
+      --ty:${Math.sin(angle)*dist}px;
+      animation-delay:${Math.random()*0.2}s;
+      animation-duration:${0.8+Math.random()*0.8}s;
+    `;
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 2000);
+  }
+}
+
+// === MODAL CONTROLS ===
+function openModal(e) {
+  const btn = e.currentTarget;
+  const rect = btn.getBoundingClientRect();
+  const cx = rect.left + rect.width/2;
+  const cy = rect.top + rect.height/2;
+  spawnParticles(cx, cy);
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  setTimeout(runConfetti, 400);
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+  if (confettiAnim) cancelAnimationFrame(confettiAnim);
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
