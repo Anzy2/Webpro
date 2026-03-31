@@ -2,8 +2,8 @@
   $page_title = "Titanio Francy Naddiansa — Portfolio";
   $owner_name = "Titanio Francy Naddiansa";
   $owner_role = "UI/UX Designer & Front-End Developer";
-  $owner_email = "titanio@gmail.com";
-  $owner_phone = "+62 812-3456-7890";
+  $owner_email = "titaniofrancy@gmail.com";
+  $owner_phone = "+62 877-3665-9183";
   $owner_location = "Purwokerto, Indonesia";
 ?>
 <!DOCTYPE html>
