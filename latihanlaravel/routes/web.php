@@ -1,14 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
-// Route default
-Route::get('/', function () {
-    return view('welcome');
-});
+// Login
+Route::get('/login', [AuthController::class, 'login']);
+Route::post('/auth', [AuthController::class, 'auth']);
 
-// Exercise 1: akses http://localhost:8000/lat1
-Route::get('/lat1', 'App\Http\Controllers\Lat1Controller@index');
+// Register
+Route::get('/registration', [AuthController::class, 'registration']);
+Route::post('/register', [AuthController::class, 'register']);
 
-// Exercise 2: akses http://localhost:8000/lat1/m2
-Route::get('/lat1/m2', 'App\Http\Controllers\Lat1Controller@method2');
+// Home
+Route::get('/home', [AuthController::class, 'home']);
+
+// Logout
+Route::get('/logout', [AuthController::class, 'logout']);
