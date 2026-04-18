@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "nama": "Titanio Francy Naddiansa",
+        "nim": "2311102289",
+        "kelas": "A",
+        "prodi": "Teknik Informatika",
+        "angkatan": 2023,
+        "ipk": 3.85
+    },
+    {
+        "id": 2,
+        "nama": "Didik Weka Pratama",
+        "nim": "2311102289",
+        "kelas": "B",
+        "prodi": "Teknik Informatika",
+        "angkatan": 2023,
+        "ipk": 3.72
+    },
+    {
+        "id": 3,
+        "nama": "Iqbal Bawani",
+        "nim": "23111021303",
+        "kelas": "A",
+        "prodi": "Teknik Informatika",
+        "angkatan": 2023,
+        "ipk": 3.60
+    },
+    {
+        "id": 4,
+        "nama": "Alden Audy Akbar",
+        "nim": "2311102309",
+        "kelas": "C",
+        "prodi": "Teknik Informatika",
+        "angkatan": 2023,
+        "ipk": 3.91
+    },
+    {
+        "id": 5,
+        "nama": "Musyafa Fadila ",
+        "nim": "2311102320",
+        "kelas": "B",
+        "prodi": "Teknik Informatika",
+        "angkatan": 2023,
+        "ipk": 3.55
+    }
+]
