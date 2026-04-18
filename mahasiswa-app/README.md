@@ -164,4 +164,4 @@ http://127.0.0.1:8000
 
 **6. Gunakan kotak pencarian** untuk memfilter data berdasarkan nama, NIM, kelas, atau prodi secara real-time.
 
-<img src="assets/Data Mahasiswa.jpeg" alt ="Data" width = "300"> 
+<img src="assets/DataMahasiswa.jpeg" alt ="Data" width = "300"> 
